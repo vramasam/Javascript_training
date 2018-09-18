@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects</title>
+</head>
+  <script>
+
+      // Different way of create objects
+      var obj = {};
+      var obj1 = new  Object();
+      var obj2 = Object.create(null);
+
+      var count = 5;
+
+      console.log(obj, obj1, obj2);
+
+      obj.title = "Batman";
+      console.log(obj.title);
+      obj.title = "Superman";
+      console.log(obj.title);
+
+
+      // Different ways of creating property name
+      obj["new name"] = "joker";
+      console.log(obj["new name"]);
+
+      obj["power"+count] = 7;
+      console.log(obj.power5);
+
+
+      // Create immutable objects, property wont get change, 
+      // its a creation pattern in Java script
+      var hero = Object.create(null);
+      Object.defineProperty(hero, "title", {
+          value : "Batman"
+      });
+      console.log(hero.title);
+      hero.title = "Joker";
+      console.log(hero.title);
+      // Directiy accessing is possible with creation pattern, 
+      // We can do it, but we are not following the creation pattern
+      hero.city = "Gotham";
+
+
+      // Create mutable objects with writable true, property wont get change, 
+      // its a creation pattern in Java script
+      var hero1 = Object.create(null);
+      Object.defineProperty(hero1, "title", {
+          value : "Batman",
+          writable : true
+      });
+      console.log(hero1.title);
+      hero1.title = "Joker";
+      console.log(hero1.title);
+
+
+      // Enumarble example, here enumerable will tell the 
+      // whether it should prop or not in "for in loop"
+      hero1.fname = "Bruce";
+      hero1.lname = "Wayne";
+      Object.defineProperty(hero1, "city", {
+          value : "Gotham",
+          writable : true,
+          enumerable : true
+      });
+      Object.defineProperty(hero, "power", {
+          value : 7,
+          writable : true
+      });
+      for(let prop in hero1) {
+          console.log("Prop : " + prop, " : "  + hero1[prop]);
+      }
+
+      // Configurable, if we make configurable true, we can 
+      // redfine the configuration again, for the same object.
+      var hero2 = Object.create(null);
+      Object.defineProperty(hero2, "title", {
+          value : "Gotham",
+          writable : true,
+          enumerable : true,
+          configurable : true
+      });
+      console.log("Hero 2 : " + hero2.title);
+      hero2.title = "Joker";
+      console.log("Hero 2 : " + hero2.title);
+      Object.defineProperty(hero2, "title", {
+          writable : false,
+          enumerable : false // changed the configuration
+      });
+      for(let prop in hero2) {
+          console.log("Prop : " + prop, " : "  + hero2[prop]);
+      }
+
+  </script>
+<body>
+    
+</body>
+</html>

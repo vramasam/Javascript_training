@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    .box {
+      margin : 0px;  
+      background-color: blue;
+      display : block;
+      width:250px;
+      height:150px;
+      border-color: green;
+      float: left;
+      margin-right: 5px;
+    }
+</style>
+<script>
+    var data = [
+        {title : "Batman", fname: "Bruce", lname: "wayne", power: 7},
+        {title : "Superman", fname: "Bruce", lname: "wayne", power: 7},
+        {title : "Spiderman", fname: "Bruce", lname: "wayne", power: 7},
+        {title : "Ironman", fname: "Bruce", lname: "wayne", power: 7},
+        {title : "Phantom", fname: "Bruce", lname: "wayne", power: 7},
+    ];
+
+    document.addEventListener("DOMContentLoaded", function() {
+        for(var i =0 ; i < data.length; i++) {
+            document.getElementsByClassName("container")[0].innerHTML += 
+            `<div class="box">
+                <h1>${data[i].title.toUpperCase()}</h1>
+                <h1>${data[i].fname+ " " + data[i].lname}</h1>
+                <input type="range" min="0" max="10" value="${data[i].power}">
+            </div>`
+        }
+    })
+</script>
+<body>
+
+    <div class="container"></div>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+            // using self
+            let cart = {
+                productPrice : function() {
+                    return 100;
+                },
+                sellingPrice : function() {
+                    let self = this;
+                    let calculateProfit = function() {
+                        return self.productPrice() * 0.2;
+                    }
+                    return this.productPrice() + calculateProfit();
+                }
+            }
+            console.log("using self : " + cart.sellingPrice());
+
+             // using arrow function, access the parents context
+             let cart1 = {
+                productPrice : function() {
+                    return 100;
+                },
+                sellingPrice : function() {
+                    let calculateProfit = () => this.productPrice() * 0.2;
+                    return this.productPrice() + calculateProfit();
+                }
+            }
+            console.log("Arrow function : " + cart1.sellingPrice());
+
+            // using call
+            let cart2 = {
+                productPrice : function() {
+                    return 100;
+                },
+                sellingPrice : function() {
+                    let calculateProfit = () => this.productPrice() * 0.2;
+                    return this.productPrice() + calculateProfit.call(this);
+                }
+            }
+            console.log("using call : " + cart2.sellingPrice());
+            
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

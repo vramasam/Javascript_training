@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+   <script>
+       var hero = {
+           title : "batman",
+           city : "Gotham",
+           power: 6,
+           movies : {
+               firstMovie : "Batman",
+               secondMovie : "Dark knight",
+               thirdMovie : "Batman rises"
+           }
+       }
+
+      // Reference and pointers needs to be consider here. try it later
+
+       let {title : hTitle, city : hCity, power :hPower, movies: {firstMovie : fm, secondMovie :sm}} = hero;
+       console.log("with array 1 : " + hTitle, hCity, hPower, fm, sm);
+
+        let {title : h1Title, city : h1City, power :h1Power, movies: mvs} = hero;
+        console.log("with array 2 : " + h1Title, h1City, h1Power,  mvs);
+
+       
+        // let {title : title, city : city, power : power} = hero;
+        // if value and property name are same no need to assign it, above code is not require
+        let {title , city , power, movies } = hero;
+        console.log("with array 3 : " + title, city, power, movies);
+       title = "change the title of let";
+       console.log(title, city, power);
+       console.log(hero.title, hero.city, hero.power);
+
+       // Stroing array data
+       let dataMovies = ["Batman", "Dark knight", "Batman rises"]
+       let[datafm, datasm, datatm] = dataMovies;
+       console.log("Array : " + datafm, datasm, datatm);
+   
+   </script>
+<body>
+    
+</body>
+</html>

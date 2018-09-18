@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        //internally behaves like this
+        // var data1 = undefined;
+
+        // function declaration
+        function data() {
+            console.log("data get called" );
+        }
+
+        // funsction expression
+        var data1 = function datavar() {
+            console.log("here data 1 work as hoisting : " +  data1);
+        }
+
+        var x = function (a, b) {return a * b};
+
+        // self invoking
+        console.log((function(args) {
+            var secret = args;
+            console.log(" self invoking : " + secret); 
+        }("My secret")));
+
+        // immediate invoking
+        console.log((function(args) {
+            var secret = args;
+            console.log("immediate invoking : " + secret); 
+        })("My another secret"));
+
+        data();
+
+        data1();
+
+        console.log(" log the x data : " + x(4, 3));
+
+        // num1 = 0 and num2 = 0 are Defaul params
+        function add(num1 = 0, num2 = 0) {
+            return num1+num2;
+        }
+        console.log(add(5, 6));
+        console.log(add(5));
+
+        function addValue (...nums) {
+            let tempVal = 0;
+            for(let i = 0; i < nums.length; i++) {
+                tempVal += nums[i];
+            }
+            return tempVal;
+        }
+
+         console.log("multi paramter ex : " + addValue(4, 8));
+         console.log("multi paramter ex : " + addValue(4, 8, 4));
+         console.log("multi paramter ex : " + addValue(4, 8, 4, 4));
+
+         function addParamter(...num) {
+            let tempVal = 0;
+            for(let i = 0; i < nums.length; i++) {
+                tempVal += nums[i];
+            }
+            return tempVal;
+         }
+
+        var value = [3, 3, 3, 3, 4]
+        console.log("spread parameter : " + addValue(...value));
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
